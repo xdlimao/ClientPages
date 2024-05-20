@@ -1,0 +1,22 @@
+.sidebar-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgb(106, 77, 106);;
+}
+
+.sidebar-grid {
+  width: 1366px;
+  height: 768px;
+
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+.location {  
+  margin: 1rem;
+  margin-left: 400px !important ;
+}

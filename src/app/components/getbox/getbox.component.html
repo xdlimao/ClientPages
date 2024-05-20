@@ -1,0 +1,32 @@
+<section class="box">
+    <div style="border-bottom: 1px solid gray;">
+        <br><br>
+        <div class="title-box">
+            <h1>GET:  
+                <mat-form-field>
+                    <mat-label>URL</mat-label>
+                    <input matInput [(ngModel)]="urlvar" value="{{urlvar}}">
+                </mat-form-field>
+            </h1>
+        </div>
+    </div>
+    <div>
+        <section class="content-grid">
+            <div>
+                Sem inputs
+            </div>
+            <div>
+                <mat-form-field class="full-width">
+                    <mat-label>Response json</mat-label>
+                    <textarea matInput class="textarea-json" rows="20" value={{data}} readonly></textarea>
+                </mat-form-field>
+            </div>
+        </section>
+    </div>
+    <div style="border-top: 1px solid gray;">
+        <div class="send-box">
+            <br>
+            <button mat-flat-button color="primary" (click)="sendRequest()">Enviar request</button>
+        </div>
+    </div>
+</section>
