@@ -7,6 +7,7 @@ import { LoginboxComponent } from './components/loginbox/loginbox.component';
 import { GetclientbyidComponent } from './pages/getclientbyid/getclientbyid.component';
 import { GetallclientswithoutdetailsComponent } from './pages/getallclientswithoutdetails/getallclientswithoutdetails.component';
 import { GetclientbyidwithoutdetailsComponent } from './pages/getclientbyidwithoutdetails/getclientbyidwithoutdetails.component';
+import { DeletebyidComponent } from './pages/deletebyid/deletebyid.component';
 
 export const routes: Routes = [
     {
@@ -43,7 +44,7 @@ export const routes: Routes = [
             },
             {
                 path: 'deletebyid',
-                component: LoginboxComponent
+                component: DeletebyidComponent
             },
             {
                 path: 'updateclient',
