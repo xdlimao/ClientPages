@@ -5,7 +5,7 @@
             <h1>GET:  
                 <mat-form-field>
                     <mat-label>URL</mat-label>
-                    <input matInput [(ngModel)]="urlvar" value="{{urlvar}}">
+                    <input matInput [(ngModel)]="urlvar" value="{{urlvar}}" #textInput (click)="scrollToEnd(textInput)">
                 </mat-form-field>
             </h1>
         </div>

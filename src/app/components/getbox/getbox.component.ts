@@ -30,7 +30,7 @@ export class GetboxComponent {
 
   urlvar!: string;
 
-  data: Array<any> = [];
+  data: any;
 
   ngOnInit() {
     this.urlvar = environment.url + this.path
@@ -39,7 +39,14 @@ export class GetboxComponent {
   sendRequest(): void {
     this.http.get(this.urlvar)
       .subscribe(
-        (response:any) => {console.log(response)},
+        (response:any) => {
+          console.log(response)
+          this.data = JSON.stringify(response,null,4)
+        }
       );
+  }
+
+  scrollToEnd(input: HTMLInputElement): void {
+    input.scrollLeft = input.scrollWidth;
   }
 }

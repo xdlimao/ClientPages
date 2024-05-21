@@ -4,6 +4,9 @@ import { EndpointsComponent } from './pages/endpoints/endpoints.component';
 import { GetboxComponent } from './components/getbox/getbox.component';
 import { GetallclientsComponent } from './pages/getallclients/getallclients.component';
 import { LoginboxComponent } from './components/loginbox/loginbox.component';
+import { GetclientbyidComponent } from './pages/getclientbyid/getclientbyid.component';
+import { GetallclientswithoutdetailsComponent } from './pages/getallclientswithoutdetails/getallclientswithoutdetails.component';
+import { GetclientbyidwithoutdetailsComponent } from './pages/getclientbyidwithoutdetails/getclientbyidwithoutdetails.component';
 
 export const routes: Routes = [
     {
@@ -20,15 +23,15 @@ export const routes: Routes = [
             },
             {
                 path: 'getclientbyid',
-                component: LoginboxComponent
+                component: GetclientbyidComponent
             },
             {
                 path: 'getallclientswithoutdetails',
-                component: LoginboxComponent
+                component: GetallclientswithoutdetailsComponent
             },
             {
                 path: 'getclientbyidwithoutdetails',
-                component: LoginboxComponent
+                component: GetclientbyidwithoutdetailsComponent
             },
             {
                 path: 'insertallvalues',
