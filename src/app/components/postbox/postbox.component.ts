@@ -1,15 +1,15 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, Input, inject } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
-  selector: 'app-deletebox',
+  selector: 'app-postbox',
   standalone: true,
   imports: [
     FormsModule,
@@ -20,13 +20,15 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule,
     HttpClientModule
   ],
-  templateUrl: './deletebox.component.html',
-  styleUrl: './deletebox.component.scss'
+  templateUrl: './postbox.component.html',
+  styleUrl: './postbox.component.scss'
 })
-export class DeleteboxComponent {
-  http = inject(HttpClient);
+export class PostboxComponent {
 
-  @Input() path: string = ""
+  http = inject(HttpClient)
+
+  @Input() path: string = "";
+  @Input() body: string = "";
 
   urlvar!: string;
 
@@ -36,14 +38,14 @@ export class DeleteboxComponent {
     this.urlvar = environment.url + this.path
   }
 
-  sendRequest(): void {
-    this.http.delete(this.urlvar, {responseType: "text"})
-      .subscribe(
-        response => this.data = response
-      );
-  }
-
   scrollToEnd(input: HTMLInputElement): void {
     input.scrollLeft = input.scrollWidth;
+  }
+
+  sendRequest(): void {
+    this.http.post(this.urlvar, JSON.parse(this.body))
+      .subscribe(
+        response => this.data = JSON.stringify(response, null, 4)
+      )
   }
 }

@@ -8,6 +8,9 @@ import { GetclientbyidComponent } from './pages/getclientbyid/getclientbyid.comp
 import { GetallclientswithoutdetailsComponent } from './pages/getallclientswithoutdetails/getallclientswithoutdetails.component';
 import { GetclientbyidwithoutdetailsComponent } from './pages/getclientbyidwithoutdetails/getclientbyidwithoutdetails.component';
 import { DeletebyidComponent } from './pages/deletebyid/deletebyid.component';
+import { InsertallvaluesComponent } from './pages/insertallvalues/insertallvalues.component';
+import { InsertmandatoryvaluesComponent } from './pages/insertmandatoryvalues/insertmandatoryvalues.component';
+import { UpdateclientComponent } from './pages/updateclient/updateclient.component';
 
 export const routes: Routes = [
     {
@@ -36,11 +39,11 @@ export const routes: Routes = [
             },
             {
                 path: 'insertallvalues',
-                component: LoginboxComponent
+                component: InsertallvaluesComponent
             },
             {
                 path: 'insertmandatoryvalues',
-                component: LoginboxComponent
+                component: InsertmandatoryvaluesComponent
             },
             {
                 path: 'deletebyid',
@@ -48,7 +51,7 @@ export const routes: Routes = [
             },
             {
                 path: 'updateclient',
-                component: LoginboxComponent
+                component: UpdateclientComponent
             }          
         ]
     }
