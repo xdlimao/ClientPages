@@ -1,17 +1,14 @@
 <div class="box">
     <mat-form-field>
-        <mat-label>Digite o email</mat-label>
-        <input matInput placeholder="peralta@server.com" [formControl]="email" (blur)="updateErrorMessage()" required>
-        @if (email.invalid) {
-        <mat-error>{{errorMessage}}</mat-error>
-        }
+        <mat-label>Digite o usuário</mat-label>
+        <input matInput placeholder="peralta" [formControl]="user" required>
     </mat-form-field>
 
     <br>
 
     <mat-form-field>
         <mat-label>Digite a senha</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" required>
+        <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required>
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -20,6 +17,6 @@
 
     <br>
     
-    <a mat-flat-button color="primary" routerLink="/endpoints">Acessar</a>
+    <a mat-flat-button color="primary"  (click)="sendLogin()">Acessar</a>
 
 </div>

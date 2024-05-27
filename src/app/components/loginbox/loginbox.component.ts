@@ -1,48 +1,57 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import {MatDividerModule} from '@angular/material/divider';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {merge} from 'rxjs';
-import { RouterLink } from '@angular/router';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { merge } from 'rxjs';
+import { Router, RouterLink } from '@angular/router';
+import { environment } from '../../../environments/environment.development';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-loginbox',
   standalone: true,
   imports: [
     RouterLink,
-    MatFormFieldModule, 
-    MatInputModule, 
-    MatButtonModule, 
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
     MatDividerModule,
-    MatIconModule, 
-    FormsModule, 
-    ReactiveFormsModule],
+    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
   templateUrl: './loginbox.component.html',
   styleUrl: './loginbox.component.scss'
 })
 export class LoginboxComponent {
-  email = new FormControl('', [Validators.required, Validators.email]);
+ 
+  user = new FormControl('', [Validators.required]);
+  password = new FormControl('', [Validators.required]);
 
   errorMessage = '';
 
-  constructor() {
-    merge(this.email.statusChanges, this.email.valueChanges)
-      .pipe(takeUntilDestroyed())
-      .subscribe(() => this.updateErrorMessage());
-  }
-
-  updateErrorMessage() {
-    if (this.email.hasError('required')) {
-      this.errorMessage = 'Você deve inserir um email';
-    } else if (this.email.hasError('email')) {
-      this.errorMessage = 'Email inválido';
-    } else {
-      this.errorMessage = 'Erro desconhecido';
-    }
-  }
+  http = inject(HttpClient)
+  router = inject(Router)
+  
   hide = true;
+
+  sendLogin(): void {
+    let body: object = {
+      login: this.user.value,
+      password: this.password.value
+    }
+    this.http.post(environment.url + "/auth", body, { responseType: "text" })
+      .subscribe(
+        response => {
+          sessionStorage.setItem("token", response)
+          this.router.navigate(["endpoints"])
+        },
+        error => alert(error.error)
+      )
+  }
 }
