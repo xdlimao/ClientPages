@@ -1,14 +1,30 @@
-<mat-card>
-    <mat-card-content>
-        <section class="layout">
-            <div class="grow1">Nome, Apelido e Descrição</div>
-            <div class="grow1">personType e identity</div>
-            <div class="grow1">avatar</div>
-            <div class="grow1">notas</div>
-            <div class="grow1" style="text-align: center;">
-                <button mat-button color="accent">Editar</button>
-                <button mat-button color="warn">Deletar</button>
-            </div>
-          </section>
-    </mat-card-content>
-</mat-card>
+@for (customer of data; track $index) {
+    <mat-card>
+        <mat-card-content>
+            <section class="layout">
+                <div class="grow1">
+                    <p>Nome: {{customer.name}}</p> <br>
+                    <p>Apelido: {{customer.nickname}}</p> <br>
+                    <p>Descrição: {{customer.description}}</p>
+                </div>
+                <div class="grow1">
+                    <p>Pessoa: {{customer.personType.name}}</p> <br>
+                    <p>Documento: {{customer.identityType.name}}</p> <br>
+                    <p>{{customer.identity}}</p>
+                </div>
+                <div class="grow1">
+                    <img src="{{customer.avatar}}" alt="Avatar image" width="90px" height="90px">
+                </div>
+                <div class="grow1">
+                    <h5>Notas</h5>
+                    <p>{{customer.note}}</p>
+                </div>
+                <div class="grow1 marginLeft" style="text-align: center;">
+                    <button mat-button color="accent">Editar</button>
+                    <button mat-button color="warn" (click)='deleteCustomer(customer.id)'>Deletar</button>
+                </div>
+              </section>
+        </mat-card-content>
+    </mat-card>
+    <hr>
+}
