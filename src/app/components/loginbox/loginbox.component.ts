@@ -49,7 +49,7 @@ export class LoginboxComponent {
       .subscribe(
         response => {
           sessionStorage.setItem("token", response)
-          this.router.navigate(["endpoints"])
+          this.router.navigate(["customers"])
         },
         error => alert(error.error)
       )

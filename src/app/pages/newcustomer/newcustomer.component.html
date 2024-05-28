@@ -1,0 +1,69 @@
+<mat-card>
+    <mat-card-content>
+        <h2> Nomes e descrição:</h2>
+        <div class="group-by-names">
+            <mat-form-field>
+                <mat-label>Nome</mat-label>
+                <input matInput>
+            </mat-form-field>&nbsp;
+            <mat-form-field>
+                <mat-label>Apelido</mat-label>
+                <input matInput>
+            </mat-form-field>&nbsp;
+            <mat-form-field>
+                <mat-label>Descrição</mat-label>
+                <input matInput>
+            </mat-form-field>
+        </div>
+
+        <h2>Identificação</h2>
+        <div>
+            <mat-form-field>
+                <mat-label>Tipo de pessoa</mat-label>
+                <mat-select>
+                    <mat-option value="one">CPF</mat-option>
+                    <mat-option value="two">CNPJ</mat-option>
+                </mat-select>
+            </mat-form-field><br>
+            <mat-form-field>
+                <mat-label>Tipo de identidade</mat-label>
+                <mat-select>
+                    <mat-option value="one">RG</mat-option>
+                    <mat-option value="two">CPF</mat-option>
+                    <mat-option value="three">CNH</mat-option>
+                    <mat-option value="four">CNPJ</mat-option>
+                </mat-select>
+            </mat-form-field>&nbsp;
+            <mat-form-field>
+                <mat-label>Identidade</mat-label>
+                <input matInput>
+            </mat-form-field><br>
+        </div>
+
+        <h2>Avatar</h2>
+        <div>
+            <section class="layout">
+                <div>
+                    <h3>Seu avatar aparecerá ao lado:</h3>
+                    <mat-form-field>
+                        <mat-label>Avatar&nbsp;</mat-label>
+                        <input matInput>
+                    </mat-form-field>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div>
+                    <img alt="Avatar image"
+                        src=""
+                        width="200px" height="200px">
+                </div>
+            </section>
+        </div>
+
+        <h2>Notas</h2>
+        <div>
+            <mat-form-field>
+                <mat-label>Notas</mat-label>
+                <textarea matInput></textarea>
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</mat-card>
