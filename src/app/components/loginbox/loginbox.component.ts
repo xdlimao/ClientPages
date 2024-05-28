@@ -10,11 +10,13 @@ import { merge } from 'rxjs';
 import { Router, RouterLink } from '@angular/router';
 import { environment } from '../../../environments/environment.development';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-loginbox',
   standalone: true,
   imports: [
+    CommonModule,
     RouterLink,
     MatFormFieldModule,
     MatInputModule,
@@ -41,6 +43,9 @@ export class LoginboxComponent {
   hide = true;
 
   sendLogin(): void {
+    if (this.user.value == '' || this.password.value == '') {
+      return;
+    }
     let body: object = {
       login: this.user.value,
       password: this.password.value

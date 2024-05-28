@@ -1,69 +1,97 @@
 <mat-card>
     <mat-card-content>
-        <h2> Nomes e descrição:</h2>
-        <div class="group-by-names">
-            <mat-form-field>
-                <mat-label>Nome</mat-label>
-                <input matInput>
-            </mat-form-field>&nbsp;
-            <mat-form-field>
-                <mat-label>Apelido</mat-label>
-                <input matInput>
-            </mat-form-field>&nbsp;
-            <mat-form-field>
-                <mat-label>Descrição</mat-label>
-                <input matInput>
-            </mat-form-field>
-        </div>
-
-        <h2>Identificação</h2>
-        <div>
-            <mat-form-field>
-                <mat-label>Tipo de pessoa</mat-label>
-                <mat-select>
-                    <mat-option value="one">CPF</mat-option>
-                    <mat-option value="two">CNPJ</mat-option>
-                </mat-select>
-            </mat-form-field><br>
-            <mat-form-field>
-                <mat-label>Tipo de identidade</mat-label>
-                <mat-select>
-                    <mat-option value="one">RG</mat-option>
-                    <mat-option value="two">CPF</mat-option>
-                    <mat-option value="three">CNH</mat-option>
-                    <mat-option value="four">CNPJ</mat-option>
-                </mat-select>
-            </mat-form-field>&nbsp;
-            <mat-form-field>
-                <mat-label>Identidade</mat-label>
-                <input matInput>
-            </mat-form-field><br>
-        </div>
-
-        <h2>Avatar</h2>
-        <div>
-            <section class="layout">
-                <div>
-                    <h3>Seu avatar aparecerá ao lado:</h3>
+        <section class="grid_4x4">
+            <div>
+                <h2> Dados pessoais</h2>
+                <div class="group-by-names">
                     <mat-form-field>
-                        <mat-label>Avatar&nbsp;</mat-label>
-                        <input matInput>
-                    </mat-form-field>&nbsp;&nbsp;&nbsp;
+                        <mat-label>Código</mat-label>
+                        <input type="number" step="1" min="1" matInput [(ngModel)] = "codigo" required>
+                    </mat-form-field>&nbsp;
+                    <mat-form-field>
+                        <mat-label>Tipo de cliente</mat-label>
+                        <mat-select [(ngModel)]="tipo" required>
+                            <mat-option value=1>Tipo 1</mat-option>
+                            <mat-option value=2>Tipo 2</mat-option>
+                            <mat-option value=3>Tipo 3</mat-option>
+                        </mat-select>
+                    </mat-form-field><br>
+                    <mat-form-field>
+                        <mat-label>Nome</mat-label>
+                        <input matInput [(ngModel)]="nome" required>
+                    </mat-form-field>&nbsp;
+                    <mat-form-field>
+                        <mat-label>Apelido</mat-label>
+                        <input matInput [(ngModel)]="apelido" required>
+                    </mat-form-field>&nbsp;
+                    <mat-form-field>
+                        <mat-label>Descrição</mat-label>
+                        <input matInput [(ngModel)]="descricao" required>
+                    </mat-form-field>
                 </div>
+            </div>
+            <div>
+                <h2>Identificação</h2>
                 <div>
-                    <img alt="Avatar image"
-                        src=""
-                        width="200px" height="200px">
+                    <mat-form-field>
+                        <mat-label>Tipo de pessoa</mat-label>
+                        <mat-select [(ngModel)]="tipo_pessoa" required>
+                            <mat-option value=1>CPF</mat-option>
+                            <mat-option value=2>CNPJ</mat-option>
+                        </mat-select>
+                    </mat-form-field>&nbsp;
+                    <mat-form-field>
+                        <mat-label>Tipo de identidade</mat-label>
+                        <mat-select [(ngModel)]="tipo_documento" required>
+                            <mat-option value=1>RG</mat-option>
+                            <mat-option value=2>CPF</mat-option>
+                            <mat-option value=3>CNH</mat-option>
+                            <mat-option value=4>CNPJ</mat-option>
+                        </mat-select>
+                    </mat-form-field>&nbsp;
+                    <mat-form-field>
+                        <mat-label>Identidade</mat-label>
+                        <input matInput [(ngModel)]="identidade" required>
+                    </mat-form-field><br>
                 </div>
-            </section>
-        </div>
-
-        <h2>Notas</h2>
-        <div>
-            <mat-form-field>
-                <mat-label>Notas</mat-label>
-                <textarea matInput></textarea>
-            </mat-form-field>
-        </div>
+            </div>
+            <div>
+                <h2>Avatar</h2>
+                <div>
+                    <section class="layout">
+                        <div>
+                            <h3>Seu avatar aparecerá ao lado:</h3>
+                            <mat-form-field>
+                                <mat-label>Avatar URL</mat-label>
+                                <input matInput [(ngModel)]="avatar_url">
+                            </mat-form-field>&nbsp;&nbsp;&nbsp;
+                        </div>
+                        <div>
+                            <img alt="Avatar image" src={{avatar_url}} width="200px" height="200px" style="margin-top: -100px;">
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div>
+                <h2>Adicionais</h2>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Notas</mat-label>
+                        <input matInput [(ngModel)]="notas">
+                    </mat-form-field>&nbsp;
+                    <mat-form-field>
+                        <mat-label>Aniversário</mat-label>
+                        <input matInput [matDatepicker]="picker" [(ngModel)]="aniversario">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
+        </section>
     </mat-card-content>
+    <div style="text-align: center; margin-bottom: 1rem">
+        <button mat-flat-button color="primary" (click)="insertCustomer()">Salvar</button>
+        &nbsp;
+        <a mat-flat-button color="warn" routerLink="/customers">Cancelar</a>
+    </div>
 </mat-card>

@@ -18,11 +18,13 @@ import {
   MatDialogClose,
 } from '@angular/material/dialog';
 import { DeletecustomerdialogComponent } from '../deletecustomerdialog/deletecustomerdialog.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-customercard',
   standalone: true,
   imports: [
+    CommonModule,
     MatCardModule,
     MatButtonModule, 
     MatDividerModule, 
@@ -48,7 +50,6 @@ export class CustomercardComponent {
       'Authorization': `Bearer ${sessionStorage.getItem("token")}`
     }}).subscribe(
       response => {
-        console.log(response)
         this.data = response
       }
     )

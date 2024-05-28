@@ -1,14 +1,23 @@
-h2, h3 {
+h2,
+h3 {
     color: white;
 }
 
 .group-by-avatar {
     display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
 }
 
 .layout {
     display: flex;
     gap: 16px;
-  }
+}
+
+.grid_4x4 {
+
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}

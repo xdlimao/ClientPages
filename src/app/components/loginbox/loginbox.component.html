@@ -1,22 +1,25 @@
 <div class="box">
-    <mat-form-field>
-        <mat-label>Digite o usuário</mat-label>
-        <input matInput placeholder="peralta" [formControl]="user" required>
-    </mat-form-field>
-
-    <br>
-
-    <mat-form-field>
-        <mat-label>Digite a senha</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required>
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-    </mat-form-field>
-
-    <br>
+    <form (ngSubmit)="sendLogin()">
+        <mat-form-field>
+            <mat-label>Digite o usuário</mat-label>
+            <input matInput placeholder="peralta" [formControl]="user" required>
+        </mat-form-field>
     
-    <a mat-flat-button color="primary"  (click)="sendLogin()">Acessar</a>
+        <br>
+    
+        <mat-form-field>
+            <mat-label>Digite a senha</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+    
+        <br>
+        
+        <button type="submit" mat-flat-button color="primary">Acessar</button>
+    </form>
+
 
 </div>

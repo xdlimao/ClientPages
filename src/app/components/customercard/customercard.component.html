@@ -16,8 +16,9 @@
                     <img src="{{customer.avatar}}" alt="Avatar image" width="90px" height="90px">
                 </div>
                 <div class="grow1">
-                    <h5>Notas</h5>
-                    <p>{{customer.note}}</p>
+                    <p>Notas:<p>
+                    <p>{{customer.note}}</p><br>
+                    <p>Aniversário: {{customer.birthdate | date:'dd/MM/yyyy' }}</p>
                 </div>
                 <div class="grow1 marginLeft" style="text-align: center;">
                     <button mat-button color="accent">Editar</button>
