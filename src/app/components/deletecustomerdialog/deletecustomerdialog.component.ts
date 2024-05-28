@@ -54,7 +54,9 @@ export class DeletecustomerdialogComponent {
       headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${sessionStorage.getItem("token")}`
-    }}).subscribe()
+    },
+    responseType: 'text'
+  }).subscribe()
     this.onNoClick()
   }
 }
