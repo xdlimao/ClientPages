@@ -21,3 +21,9 @@ h3 {
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
 }
+
+.grid_3x1 {
+    display: flex;
+    gap: 16px;
+    justify-content: space-around;
+}

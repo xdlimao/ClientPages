@@ -6,14 +6,14 @@
                 <div class="group-by-names">
                     <mat-form-field>
                         <mat-label>Código</mat-label>
-                        <input type="number" step="1" min="1" matInput [(ngModel)] = "codigo" required>
+                        <input type="number" step="1" min="1" matInput [(ngModel)]="codigo" required>
                     </mat-form-field>&nbsp;
                     <mat-form-field>
                         <mat-label>Tipo de cliente</mat-label>
                         <mat-select [(ngModel)]="tipo" required>
-                            <mat-option value=1>Tipo 1</mat-option>
-                            <mat-option value=2>Tipo 2</mat-option>
-                            <mat-option value=3>Tipo 3</mat-option>
+                            <mat-option value=1>Legal</mat-option>
+                            <mat-option value=2>Otário</mat-option>
+                            <mat-option value=3>Bobão</mat-option>
                         </mat-select>
                     </mat-form-field><br>
                     <mat-form-field>
@@ -67,7 +67,8 @@
                             </mat-form-field>&nbsp;&nbsp;&nbsp;
                         </div>
                         <div>
-                            <img alt="Avatar image" src={{avatar_url}} width="200px" height="200px" style="margin-top: -100px;">
+                            <img alt="Avatar image" src={{avatar_url}} width="200px" height="200px"
+                                style="margin-top: -100px;">
                         </div>
                     </section>
                 </div>
@@ -81,14 +82,27 @@
                     </mat-form-field>&nbsp;
                     <mat-form-field>
                         <mat-label>Aniversário</mat-label>
-                        <input matInput [matDatepicker]="picker" [(ngModel)]="aniversario">
+                        <input matInput [matDatepicker]="picker" [(ngModel)]="aniversario" required>
                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
                 </div>
             </div>
         </section>
+        <section class="grid_3x1">
+            <div>
+                <h2>Telefones</h2>
+                <app-formphone (eventEmit)="defineTelephone($event)"></app-formphone>
+            </div>
+            <div>
+                <h2>Emails</h2>
+            </div>
+            <div>
+                <h2>Endereços</h2>
+            </div>
+        </section>
     </mat-card-content>
+    <br>
     <div style="text-align: center; margin-bottom: 1rem">
         <button mat-flat-button color="primary" (click)="insertCustomer()">Salvar</button>
         &nbsp;

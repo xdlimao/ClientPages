@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
@@ -15,6 +15,7 @@ import {
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CustomerService } from '../../services/customer.service';
 
 export interface DialogData {
   identity: string
@@ -44,19 +45,13 @@ export class DeletecustomerdialogComponent {
     private http:HttpClient,
     private router: Router
   ) {}
-
+  _customerService = inject(CustomerService)
   onNoClick(): void {
     this.dialogRef.close();
   }
 
   onConfirmDelete(): void{
-    this.http.delete(environment.url+`/customer/${this.data.identity}`,{  
-      headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${sessionStorage.getItem("token")}`
-    },
-    responseType: 'text'
-  }).subscribe()
+    this._customerService.deleteCustomer(this.data.identity).subscribe()
     this.onNoClick()
   }
 }

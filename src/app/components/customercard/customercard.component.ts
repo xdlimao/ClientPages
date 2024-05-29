@@ -19,6 +19,7 @@ import {
 } from '@angular/material/dialog';
 import { DeletecustomerdialogComponent } from '../deletecustomerdialog/deletecustomerdialog.component';
 import { CommonModule } from '@angular/common';
+import { CustomerService } from '../../services/customer.service';
 
 @Component({
   selector: 'app-customercard',
@@ -41,23 +42,19 @@ export class CustomercardComponent {
 
   data!:any;
   http = inject(HttpClient)
+  _customerService = inject(CustomerService)
   constructor(public dialog: MatDialog) {}
 
   getCustomers(){
-    this.http.get(environment.url + "/customer", {  
-      headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${sessionStorage.getItem("token")}`
-    }}).subscribe(
-      response => {
-        this.data = response
-      }
-    )
+    this._customerService.getCustomers().subscribe( response => this.data = response )
   }
-
   ngOnInit() {
     this.getCustomers();
   }
+
+  // verDetalhes(customer:any):void {
+  //   const dialogRef = this.dialog.open()
+  // }
 
   deleteCustomer(id:string):void {
     const dialogRef = this.dialog.open(DeletecustomerdialogComponent, {data: {identity: id}})

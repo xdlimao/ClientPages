@@ -11,6 +11,7 @@ import { Router, RouterLink } from '@angular/router';
 import { environment } from '../../../environments/environment.development';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-loginbox',
@@ -39,7 +40,8 @@ export class LoginboxComponent {
 
   http = inject(HttpClient)
   router = inject(Router)
-  
+  _userService = inject(UserService)
+
   hide = true;
 
   sendLogin(): void {
@@ -50,8 +52,7 @@ export class LoginboxComponent {
       login: this.user.value,
       password: this.password.value
     }
-    this.http.post(environment.url + "/auth", body, { responseType: "text" })
-      .subscribe(
+    this._userService.auth(body).subscribe(
         response => {
           sessionStorage.setItem("token", response)
           this.router.navigate(["customers"])
