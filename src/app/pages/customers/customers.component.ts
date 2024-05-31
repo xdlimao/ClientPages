@@ -3,6 +3,11 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { LogoffdialogComponent } from '../../components/logoffdialog/logoffdialog.component';
 
 
 @Component({
@@ -15,13 +20,15 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
         MatButtonModule,
         MatIconModule,
         RouterLink,
-        RouterOutlet
+        RouterOutlet,
+        MatFormFieldModule, 
+        MatInputModule, 
+        FormsModule
     ]
 })
 export class CustomersComponent {
-    router = inject(Router)
+    dialog = inject(MatDialog)
     logoff() {
-        sessionStorage.setItem('token', '')
-        this.router.navigate([''])
+        const dialogRef = this.dialog.open(LogoffdialogComponent)
     }
 }

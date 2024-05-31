@@ -1,0 +1,24 @@
+<div>
+    @for (value of values; track $index) {
+        <mat-form-field class="tipo">
+            <mat-label>Tipo</mat-label>
+            <mat-select [(ngModel)]="values[$index].type.code" (blur)="sendData(values)" required>
+                <mat-option value=1>Pessoal</mat-option>
+                <mat-option value=2>Trabalho</mat-option>
+                <mat-option value=3>Outro</mat-option>
+            </mat-select>
+        </mat-form-field>&nbsp;
+        <mat-form-field class="endereco">
+            <mat-label>Endereço</mat-label>
+            <input matInput type="email" placeholder="user@domain.com" [(ngModel)]="values[$index].address" (blur)="sendData(values)" required>
+        </mat-form-field>
+        @if (values.length != 1) {
+            <button mat-button color="warn" (click)="removeValue($index)">&nbsp;&nbsp;&nbsp;Remover email</button>
+        }
+        <br>
+        @if (values.length > 1){<hr>}
+
+    }
+    <button mat-button color="accent" (click)="addValue()">Adicionar novo telefone</button>
+
+</div>

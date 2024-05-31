@@ -20,6 +20,7 @@ import {
 import { DeletecustomerdialogComponent } from '../deletecustomerdialog/deletecustomerdialog.component';
 import { CommonModule } from '@angular/common';
 import { CustomerService } from '../../services/customer.service';
+import { ViewcustomerdialogComponent } from '../viewcustomerdialog/viewcustomerdialog.component';
 
 @Component({
   selector: 'app-customercard',
@@ -52,9 +53,14 @@ export class CustomercardComponent {
     this.getCustomers();
   }
 
-  // verDetalhes(customer:any):void {
-  //   const dialogRef = this.dialog.open()
-  // }
+  expandDetails(id:string):void {
+    const dialogRef = this.dialog.open(ViewcustomerdialogComponent, {data: id})
+    dialogRef.afterClosed().subscribe(result => {
+      this.getCustomers();
+    });
+  }
+  
+  //updateCustomer
 
   deleteCustomer(id:string):void {
     const dialogRef = this.dialog.open(DeletecustomerdialogComponent, {data: {identity: id}})

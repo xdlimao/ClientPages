@@ -12,6 +12,9 @@ export class CustomerService {
   getCustomers(){
     return this.http.get(environment.url+"/customer", {headers:{'Authorization': `Bearer ${sessionStorage.getItem("token")}`}})
   }
+  getCustomerById(id:any){
+    return this.http.get(environment.url+`/customer/${id}`, {headers:{'Authorization': `Bearer ${sessionStorage.getItem("token")}`}})
+  }
   deleteCustomer(id:string){
     return this.http.delete(environment.url+`/customer/${id}`,{responseType: 'text'})
   }
