@@ -1,9 +1,56 @@
 <div class="content">
     <h3>Código: {{customer.code}}</h3>
     <h2>{{customer.name}}</h2>
+    <p>{{customer.type.name}}</p>
     <p>{{customer.nickname}}</p>
     <p>Descrição: {{customer.description}}</p>
 </div>
+<section class="grid_2x2">
+    <div>
+        <h3>Código: {{customer.code}}</h3>
+        <h2>{{customer.name}}</h2>
+        <p>{{customer.nickname}}</p>
+        <p>Descrição: {{customer.description}}</p>
+    </div>
+    <div>
+        <img src="{{ customer.avatar }}" alt="Avatar" height="300px" width="300px">
+    </div>
+    <div>
+        <p>Pessoa: {{customer.personType.name}}</p>
+        <p>Documento: {{customer.identityType.name}}</p>
+        <p>{{customer.identity}}</p>
+        <p>Data de aniversário: {{customer.birthdate}}</p>
+        <p>Notas: {{customer.note}}</p>
+    </div>
+    <div>
+        <p>Telefones:</p>
+        <br>
+        @for (phone of customer.phones; track $index) {
+            <p>{{phone.type.name}}</p>
+            <p>{{phone.countryCode}} {{phone.ddd}} {{phone.phoneNumber}}</p>
+            <br>
+        }
+        <p>Emails</p>
+        <br>
+        @for (email of customer.emails; track $index) {
+            <p>{{email.type.name}}</p>
+            <p>{{email.address}}</p>
+            <br>
+        }
+        <p>Endereços</p>
+        <br>
+        @for (address of customer.addresses; track $index) {
+            <p>{{address.type.name}}</p>
+            <p>{{address.postalCode}}</p>
+            <p>{{address.street}}, {{address.number}} - {{address.neighborhood}}</p>
+            @if (address.complement != null || address.complement != ''){
+                <p>{{address.complement}}</p>
+            }
+            <p>{{address.city}}/{{address.state}} - {{address.country}}</p>
+            <br>
+        }
+    </div>
+</section>
 <mat-dialog-actions>
     <button mat-button (click)="onCloseClick()">Fechar</button>
 </mat-dialog-actions>

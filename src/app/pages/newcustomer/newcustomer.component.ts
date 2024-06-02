@@ -215,29 +215,29 @@ export class NewcustomerComponent {
 
     let body: object =
     {
-      code: this.codigo,
+      code: this.codigo, //
       type: {
-        code: this.tipo,
-        name: this.tipoCliente(this.tipo)
+        code: this.tipo, //
+        name: this.tipoCliente(this.tipo) //
       },
-      name: this.nome,
-      nickname: this.apelido,
-      description: this.descricao,
+      name: this.nome, //
+      nickname: this.apelido, //
+      description: this.descricao, //
       personType: {
-        code: this.tipo_pessoa,
-        name: this.tipoPessoa(this.tipo_pessoa)
+        code: this.tipo_pessoa, //
+        name: this.tipoPessoa(this.tipo_pessoa) //
       },
       identityType: {
-        code: this.tipo_documento,
-        name: this.tipoDocumento(this.tipo_documento)
+        code: this.tipo_documento, //
+        name: this.tipoDocumento(this.tipo_documento) //
       },
-      identity: this.identidade,
+      identity: this.identidade, //
       birthdate: this.aniversario,
       addresses: this.endereco,
       phones: this.telefone,
       emails: this.email,
-      avatar: this.avatar_url,
-      note: this.notas
+      avatar: this.avatar_url, //
+      note: this.notas //
     }
 
     this._customerService.insertCustomer(body).subscribe(

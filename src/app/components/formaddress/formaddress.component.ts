@@ -69,8 +69,13 @@ export class FormaddressComponent {
         this.values[index].neighborhood = response.bairro
         this.values[index].city = response.localidade
         this.values[index].state = response.uf
-        this.values[index].country = "Brasil"
-        console.log(this.values)
+        try {
+          if(response.erro)
+            this.values[index].country = ''
+        } catch  {
+          this.values[index].country = "Brasil"
+        }
+
       },
       error => {}
     )
