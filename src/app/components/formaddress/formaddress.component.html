@@ -10,11 +10,11 @@
         </mat-form-field>&nbsp;
         <mat-form-field class="codigo_postal">
             <mat-label>CEP</mat-label>
-            <input matInput [(ngModel)]="values[$index].postalCode" (blur)="getInfoByCEP($index)" required>
+            <input matInput type="number" step="1" min="1" [(ngModel)]="values[$index].postalCode" (blur)="getInfoByCEP($index)" required>
         </mat-form-field>&nbsp;
         <mat-form-field class="numero">
             <mat-label>Número</mat-label>
-            <input matInput [(ngModel)]="values[$index].number" (blur)="sendData(values)" required>
+            <input matInput type="number" step="1" min="1" [(ngModel)]="values[$index].number" (blur)="sendData(values)" required>
         </mat-form-field><br>
         <mat-form-field class="complemento">
             <mat-label>Complemento</mat-label>

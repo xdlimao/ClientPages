@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { CepService } from '../../services/cep.service';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -44,7 +44,7 @@ interface endereco {
 export class FormaddressComponent {
   @Output() eventEmit = new EventEmitter<any>();
   
-  values: endereco[] = [
+  @Input() values: endereco[] = [
     {
       type: {
         code: '',

@@ -21,4 +21,7 @@ export class CustomerService {
   insertCustomer(body:object){
     return this.http.post(environment.url + "/customer", body)
   }
+  updateCustomer(body:object){
+    return this.http.put(environment.url + "/customer", body)
+  }
 }

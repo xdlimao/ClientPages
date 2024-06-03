@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
@@ -9,7 +9,7 @@ import { MatSelectModule } from '@angular/material/select';
 
 interface email {
   type: {
-    code: string
+    code: string | number
     name: string
   }
   address: string
@@ -31,10 +31,12 @@ interface email {
   styleUrl: './formemail.component.scss'
 })
 export class FormemailComponent {
-  
+
   @Output() eventEmit = new EventEmitter<any>();
   
-  values: email[] = [
+
+
+  @Input() values: email[] = [
     {
       type: {
         code: '',

@@ -51,7 +51,7 @@
                     </mat-form-field>&nbsp;
                     <mat-form-field>
                         <mat-label>Identidade</mat-label>
-                        <input matInput type="number" step="1" min="1" [(ngModel)]="identidade" required>
+                        <input matInput [(ngModel)]="identidade" required>
                     </mat-form-field><br>
                 </div>
             </div>
@@ -92,21 +92,21 @@
         <section class="grid_3x1">
             <div class="border-top">
                 <h2>Telefones</h2>
-                <app-formphone (eventEmit)="defineTelephone($event)"></app-formphone>
+                <app-formphone [values]=telefone (eventEmit)="defineTelephone($event)"></app-formphone>
             </div>
             <div class="border-top">
                 <h2>Emails</h2>
-                <app-formemail (eventEmit)="defineEmail($event)"></app-formemail>
+                <app-formemail [values]=email (eventEmit)="defineEmail($event)"></app-formemail>
             </div>
             <div class="border-top">
                 <h2>Endereços</h2>
-                <app-formaddress (eventEmit)="defineAddress($event)"></app-formaddress>
+                <app-formaddress [values]=endereco (eventEmit)="defineAddress($event)"></app-formaddress>
             </div>
         </section>
     </mat-card-content>
     <br>
     <div style="text-align: center; margin-bottom: 1rem">
-        <button mat-flat-button color="primary" (click)="insertCustomer()">Salvar</button>
+        <button mat-flat-button color="primary" (click)="updateCustomer()">Salvar</button>
         &nbsp;
         <a mat-flat-button color="warn" routerLink="/customers">Cancelar</a>
     </div>

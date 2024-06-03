@@ -21,6 +21,7 @@ import { DeletecustomerdialogComponent } from '../deletecustomerdialog/deletecus
 import { CommonModule } from '@angular/common';
 import { CustomerService } from '../../services/customer.service';
 import { ViewcustomerdialogComponent } from '../viewcustomerdialog/viewcustomerdialog.component';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-customercard',
@@ -35,7 +36,7 @@ import { ViewcustomerdialogComponent } from '../viewcustomerdialog/viewcustomerd
     MatFormFieldModule,
     MatInputModule, 
     FormsModule
-  ],
+    ],
   templateUrl: './customercard.component.html',
   styleUrl: './customercard.component.scss'
 })
@@ -43,6 +44,7 @@ export class CustomercardComponent {
 
   data!:any;
   http = inject(HttpClient)
+  router = inject(Router)
   _customerService = inject(CustomerService)
   constructor(public dialog: MatDialog) {}
 
@@ -60,7 +62,9 @@ export class CustomercardComponent {
     });
   }
   
-  //updateCustomer
+  updateCustomer (id:string) {
+    this.router.navigate(['customers/editcustomer', id])
+  }
 
   deleteCustomer(id:string):void {
     const dialogRef = this.dialog.open(DeletecustomerdialogComponent, {data: {identity: id}})

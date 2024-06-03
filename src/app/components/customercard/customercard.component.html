@@ -22,7 +22,7 @@
                 </div>
                 <div class="grow1 marginLeft" style="text-align: center;">
                     <button mat-button (click)="expandDetails(customer.id)">Ver dados</button>
-                    <button mat-button color="accent">Editar</button>
+                    <button mat-button color="accent" (click)="updateCustomer(customer.id)">Editar</button>
                     <button mat-button color="warn" (click)='deleteCustomer(customer.id)'>Deletar</button>
                 </div>
               </section>
