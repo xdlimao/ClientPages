@@ -54,7 +54,7 @@ export class CustomercardComponent {
   }
 
   expandDetails(id:string):void {
-    const dialogRef = this.dialog.open(ViewcustomerdialogComponent, {data: id})
+    const dialogRef = this.dialog.open(ViewcustomerdialogComponent, {height: '850px', width:'1700px', data: id})
     dialogRef.afterClosed().subscribe(result => {
       this.getCustomers();
     });

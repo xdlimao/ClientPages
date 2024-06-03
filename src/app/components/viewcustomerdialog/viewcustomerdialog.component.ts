@@ -6,11 +6,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CustomerService } from '../../services/customer.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-viewcustomerdialog',
   standalone: true,
   imports: [
+    CommonModule,
     MatFormFieldModule,
     MatInputModule,
     FormsModule,

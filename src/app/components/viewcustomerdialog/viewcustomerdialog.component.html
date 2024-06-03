@@ -1,56 +1,51 @@
-<div class="content">
-    <h3>Código: {{customer.code}}</h3>
-    <h2>{{customer.name}}</h2>
-    <p>{{customer.type.name}}</p>
-    <p>{{customer.nickname}}</p>
-    <p>Descrição: {{customer.description}}</p>
-</div>
 <section class="grid_2x2">
-    <div>
-        <h3>Código: {{customer.code}}</h3>
-        <h2>{{customer.name}}</h2>
-        <p>{{customer.nickname}}</p>
-        <p>Descrição: {{customer.description}}</p>
-    </div>
-    <div>
-        <img src="{{ customer.avatar }}" alt="Avatar" height="300px" width="300px">
-    </div>
-    <div>
+    <div class="aligncontent">
+        <p>Código: {{customer.code}}</p>
+        <p class="titlep">{{customer.name}}</p>
+        <p class="subtitlep">{{customer.nickname}}</p>
+        <p><i>Descrição: {{customer.description}}</i></p>
         <p>Pessoa: {{customer.personType.name}}</p>
-        <p>Documento: {{customer.identityType.name}}</p>
-        <p>{{customer.identity}}</p>
-        <p>Data de aniversário: {{customer.birthdate}}</p>
+        <p>Documento: {{customer.identityType.name}} - {{customer.identity}}</p>
+        <p>Data de aniversário: {{customer.birthdate | date:'dd/MM/yyyy'}}</p>
         <p>Notas: {{customer.note}}</p>
     </div>
-    <div>
-        <p>Telefones:</p>
-        <br>
-        @for (phone of customer.phones; track $index) {
-            <p>{{phone.type.name}}</p>
-            <p>{{phone.countryCode}} {{phone.ddd}} {{phone.phoneNumber}}</p>
-            <br>
-        }
-        <p>Emails</p>
-        <br>
-        @for (email of customer.emails; track $index) {
-            <p>{{email.type.name}}</p>
-            <p>{{email.address}}</p>
-            <br>
-        }
-        <p>Endereços</p>
-        <br>
+    <div class="aligncontent">
+        <img src="{{ customer.avatar }}" alt="Avatar" height="300px" width="300px">
+    </div>
+    <div class="aligncontent">
+        <p class="subtitlep">Endereços</p>
         @for (address of customer.addresses; track $index) {
-            <p>{{address.type.name}}</p>
-            <p>{{address.postalCode}}</p>
+            <p><u><i>{{address.type.name}}</i></u></p>
+            <p>CEP: {{address.postalCode}}</p>
             <p>{{address.street}}, {{address.number}} - {{address.neighborhood}}</p>
             @if (address.complement != null || address.complement != ''){
                 <p>{{address.complement}}</p>
             }
             <p>{{address.city}}/{{address.state}} - {{address.country}}</p>
-            <br>
+            @if (address.length != 1){
+                <br>
+            }
+        }
+    </div>
+    <div class="aligncontent">
+        <p class="subtitlep">Telefones:</p>
+        @for (phone of customer.phones; track $index) {
+            <p>{{phone.type.name}}</p>
+            <p>+{{phone.countryCode}} {{phone.ddd}} {{phone.phoneNumber}}</p>
+            @if (phone.length != 1){
+                <br>
+            }
+        }
+        <p class="subtitlep">Emails</p>
+        @for (email of customer.emails; track $index) {
+            <p>{{email.type.name}}</p>
+            <p>{{email.address}}</p>
+            @if (email.length != 1){
+                <br>
+            }
         }
     </div>
 </section>
-<mat-dialog-actions>
+<mat-dialog-actions style="margin-top: 2rem;">
     <button mat-button (click)="onCloseClick()">Fechar</button>
 </mat-dialog-actions>

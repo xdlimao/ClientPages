@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 interface endereco {
   type: {
@@ -28,6 +29,7 @@ interface endereco {
   selector: 'app-formaddress',
   standalone: true,
   imports: [
+    CommonModule,
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
@@ -65,16 +67,13 @@ export class FormaddressComponent {
     this.cep.getCep(this.values[index].postalCode).subscribe(
       (response:any) => {
         console.log(response)
-        this.values[0].street = response.logradouro
+        this.values[index].street = response.logradouro
         this.values[index].neighborhood = response.bairro
         this.values[index].city = response.localidade
         this.values[index].state = response.uf
-        try {
-          if(response.erro)
-            this.values[index].country = ''
-        } catch  {
+        if(response.street != '')
           this.values[index].country = "Brasil"
-        }
+
 
       },
       error => {}
